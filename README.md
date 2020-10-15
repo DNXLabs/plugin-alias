@@ -40,8 +40,7 @@ one start
 ## Parameters
 
 ```yaml
-- <command>:
-  name: <command_name>
+- name: <command_name>
   image: <string(docker_image)> # default to
   entrypoint: <string(entrypoint)> # default to None
   volumes: <list(volumes)> # ['.:/work', '.:/app']
