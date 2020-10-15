@@ -10,7 +10,7 @@ required_version: ">= 0.6.5"
 
 plugins:
   commands:
-    source: https://github.com/DNXLabs/plugin-commands/archive/master.tar.gz
+    source: https://github.com/DNXLabs/plugin-commands/archive/0.1.0.tar.gz
 
 commands:
 - name: install
