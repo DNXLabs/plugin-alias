@@ -2,7 +2,6 @@
 
 This is a one-cli plugin that allow to create new commands during runtime to the CLI.
 
-
 ## Configuration
 
 ```yaml
@@ -12,22 +11,20 @@ plugins:
     source: https://github.com/DNXLabs/plugin-commands/archive/master.tar.gz
 
 commands:
-- install:
-  name: install
+- name: install
   command: 'npm install'
   volumes: ['.:/work']
   help: 'npm install'
-- build:
-  name: build
+- name: build
   command: 'npm run build'
   volumes: ['.:/work']
   help: 'npm run build'
-- start:
-  name: start
+- name: start
   volumes: ['.:/work']
   command: 'npm start'
-  ports: ['4100']
+  ports: ['4100:4100']
   help: 'npm start'
+  environment: ['TEST': 'test']
 ```
 
 ## Usage
@@ -38,16 +35,17 @@ one build
 one start
 ```
 
-
 ## Parameters
+
 ```yaml
 - <command>:
   name: <command_name>
-  image: <string(docker_image)> # default to dnxsolutions/shell:latest
+  image: <string(docker_image)> # default to
   entrypoint: <string(entrypoint)> # default to None
   volumes: <list(volumes)> # ['.:/work', '.:/app']
-  command: <string(command)> # default to None
-  ports: <list(ports)>  # ['3000', '4100']
+  command: <string(command)>
+  ports: <list(ports)>  # ['3000:3000', '4100:4100']
+  environment: <list(environments)> # ['ENV': 'env']
   help: <string(help)>
 ```
 

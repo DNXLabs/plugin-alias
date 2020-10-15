@@ -20,39 +20,39 @@ SHELL_IMAGE = image.get_image('shell')
 def make_callback(image, command, ports, entrypoint, volumes, environment):
     def callback():
         container.create(
-            image=image,
-            command=command,
-            ports=ports,
-            entrypoint=entrypoint,
-            volumes=volumes,
-            environment=environment
+            image = image,
+            command = command,
+            ports = ports,
+            entrypoint = entrypoint,
+            volumes = volumes,
+            environment = environment
         )
     return callback
 
 
 def __init__():
-    if not path.exists('.one'):
-        os.mkdir('.one')
     commands = []
 
     try:
         with open(CONFIG_FILE) as file:
             docs = yaml.load(file, Loader=yaml.FullLoader)
 
-        envs = environment.build().get_env()
-
         for cmd in docs['commands']:
+            envs = cmd.get('environment', [])
+            environment = {}
+            for env in envs:
+                environment[list(env.keys())[0]] = list(env.values())[0]
             func = make_callback(
                 image = cmd.get('image', SHELL_IMAGE),
                 command = cmd.get('command', None),
                 ports = cmd.get('ports', []),
                 entrypoint = cmd.get('entrypoint', None),
                 volumes = cmd.get('volumes', []),
-                environment = envs
+                environment = environment
             )
 
             command = click.Command(
-                name = list(cmd.keys())[0],
+                name = cmd.get('name', ''),
                 help = cmd.get('help', ''),
                 callback = func
             )
