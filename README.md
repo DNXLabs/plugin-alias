@@ -6,6 +6,8 @@ This is a one-cli plugin that allow to create new commands during runtime to the
 
 ```yaml
 # one.yaml
+required_version: ">= 0.6.5"
+
 plugins:
   commands:
     source: https://github.com/DNXLabs/plugin-commands/archive/master.tar.gz
