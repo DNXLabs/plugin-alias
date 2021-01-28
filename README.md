@@ -3,7 +3,7 @@
 This is a one-cli plugin that allow to create new commands during runtime to the CLI.
 
 ![Build](https://github.com/DNXLabs/plugin-commands/workflows/Build/badge.svg)
-[![PyPI](https://badge.fury.io/py/plugin-commands.svg)](https://pypi.python.org/pypi/one-cli-plugin-commands/)
+[![PyPI](https://badge.fury.io/py/one-cli-plugin-commands.svg)](https://pypi.python.org/pypi/one-cli-plugin-commands/)
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/plugin-commands)](https://github.com/DNXLabs/plugin-commands/blob/master/LICENSE)
 
 ## Configuration
