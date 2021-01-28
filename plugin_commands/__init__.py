@@ -1,13 +1,9 @@
 import click
 import yaml
-import os
-import json
-from os import path
 from one.__init__ import CONFIG_FILE
 from one.docker.container import Container
 from one.docker.image import Image
 from one.utils.environment.aws import EnvironmentAws
-from one.utils.config import get_config_value
 from one.one import cli
 
 
@@ -20,18 +16,17 @@ SHELL_IMAGE = image.get_image('shell')
 def make_callback(image, command, ports, entrypoint, volumes, environment):
     def callback():
         container.create(
-            image = image,
-            command = command,
-            ports = ports,
-            entrypoint = entrypoint,
-            volumes = volumes,
-            environment = environment
+            image=image,
+            command=command,
+            ports=ports,
+            entrypoint=entrypoint,
+            volumes=volumes,
+            environment=environment
         )
     return callback
 
 
 def __init__():
-    commands = []
 
     try:
         with open(CONFIG_FILE) as file:
@@ -43,18 +38,18 @@ def __init__():
             for env in envs:
                 environment[list(env.keys())[0]] = list(env.values())[0]
             func = make_callback(
-                image = cmd.get('image', SHELL_IMAGE),
-                command = cmd.get('command', None),
-                ports = cmd.get('ports', []),
-                entrypoint = cmd.get('entrypoint', None),
-                volumes = cmd.get('volumes', []),
-                environment = environment
+                image=cmd.get('image', SHELL_IMAGE),
+                command=cmd.get('command', None),
+                ports=cmd.get('ports', []),
+                entrypoint=cmd.get('entrypoint', None),
+                volumes=cmd.get('volumes', []),
+                environment=environment
             )
 
             command = click.Command(
-                name = cmd.get('name', ''),
-                help = cmd.get('help', ''),
-                callback = func
+                name=cmd.get('name', ''),
+                help=cmd.get('help', ''),
+                callback=func
             )
 
             cli.add_command(command)
