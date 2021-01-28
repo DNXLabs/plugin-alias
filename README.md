@@ -14,7 +14,9 @@ required_version: ">= 0.6.5"
 
 plugins:
   commands:
-    source: https://github.com/DNXLabs/plugin-commands/archive/0.1.0.tar.gz
+    package: one-cli-plugin-commands
+    version: 0.1.1
+    module: 'plugin_commands'
 
 commands:
 - name: install
@@ -54,6 +56,12 @@ one start
   help: <string(help)>
 ```
 
+## Development
+
+#### Dependencies
+
+- Python 3
+
 #### Python Virtual Environment
 
 ```bash
@@ -66,12 +74,6 @@ source env/bin/activate
 # When you finish you can exit typing
 deactivate
 ```
-
-## Development
-
-#### Dependencies
-
-- Python 3
 
 #### Install dependencies
 
