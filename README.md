@@ -13,10 +13,8 @@ This is a one-cli plugin that allow to create new commands during runtime to the
 required_version: ">= 0.6.5"
 
 plugins:
-  commands:
-    package: one-cli-plugin-commands
-    version: 0.1.1
-    module: 'plugin_commands'
+- package: one-cli-plugin-commands==0.1.1
+  module: 'plugin_commands'
 
 commands:
 - name: install
