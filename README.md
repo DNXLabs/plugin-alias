@@ -10,10 +10,10 @@ This is a one-cli plugin that allow to create new commands during runtime to the
 
 ```yaml
 # one.yaml
-required_version: ">= 0.6.5"
+required_version: ">= 0.7.0"
 
 plugins:
-- package: one-cli-plugin-commands==0.1.1
+- package: one-cli-plugin-commands==0.1.3
   module: 'plugin_commands'
 
 commands:
