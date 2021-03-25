@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 install_requires = []
 
-__version__ = '0.1.4'
+__version__ = '0.1.5'
 
 setup(
     name='one-cli-plugin-commands',
