@@ -9,12 +9,17 @@ from one.one import cli
 
 container = Container()
 image = Image()
-environment = EnvironmentAws()
 SHELL_IMAGE = image.get_image('shell')
 
 
 def make_callback(image, command, ports, entrypoint, volumes, environment):
     def callback():
+        secrets_envs = EnvironmentAws().build(
+            workspace='default',
+            aws_account_id='none',
+            aws_role='none',
+            aws_assume_role='false').get_env()
+        environment.update(secrets_envs)
         container.create(
             image=image,
             command=command,
